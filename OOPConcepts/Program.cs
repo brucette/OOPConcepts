@@ -8,22 +8,34 @@ namespace OOPConcepts
         {
             try
             {
-                // PUNKT 3.1.1
+                // **** PUNKT 3.1.1 ****
                 // Person mathias = new Person(38, "Mathias", "Wahl", 1.70, 75);
-                // Console.WriteLine(mathias.age); // age is inaccessible
+                // Console.WriteLine($"{mathias.age} {mathias.name} {mathias.lName} {mathias.fName} {mathias.weight} {mathias.height}"); // all private fields are inaccessible
+                
                 // Console.WriteLine($"Age is: {mathias.Age}"); // accessible
                 // mathias.Age = -3;
 
-                // PUNKT 3.1.5
+                // All the following throw the correct error messages:
+                // Person mathias2 = new Person(0, "Mathias", "Wahl", 1.70, 75);
+                // Person mathias3 = new Person(38, "Mathiasmath", "Wahl", 1.70, 75);
+                // Person mathias4 = new Person(38, "Mathias", "Wa", 1.70, 75);
+                // Person mathias = new Person(38, "", "Wa", 1.70, 75);
+
+                // **** PUNKT 3.1.5 ****
                 PersonHandler personHandler = new PersonHandler();
-                Person chris = new Person(18, "Chris", "Ronaldo", 1.70, 75);
+
+                Person chris = personHandler.CreatePerson(18, "Chris", "Ronaldo", 1.70, 75);
                 Person sara = personHandler.CreatePerson(45, "Sara", "Jones", 1.64, 57);
+
+                personHandler.LoseWeight(chris, 20);
+                personHandler.Grow(chris);
+                Console.WriteLine($"Chris now weighs: {chris.Weight} and is {chris.Height} tall");
+
                 personHandler.SetAge(sara, 47);
+                Console.WriteLine($"Sara's age is now: {sara.Age}");
 
-                Console.WriteLine($"Age is: {sara.Age}" +
-                    $"\nHeight is now {sara.Height}");
-                personHandler.Grow(sara);
-
+                // personHandler.Grow(sara); // throws correct error
+                personHandler.LoseWeight(chris, 50); // throws correct error
             }
             catch (ArgumentException ex)
             {
@@ -40,7 +52,7 @@ namespace OOPConcepts
                 Console.ResetColor();
             }
 
-            // PUNKT 3.2.7
+            // **** PUNKT 3.2.7 - 8 ****
             UserError error1 = new TextInputError();
             UserError error2 = new NumericInputError();
             UserError error3 = new NumericInputError();
@@ -58,6 +70,10 @@ namespace OOPConcepts
             {
                 Console.WriteLine(error.UEMessage());
             }
+
+            Wolfman wolf = new Wolfman("thewolf", 34, 34, "grey");
+            wolf.DoSound();
+            wolf.Talk();
         }
     }
 }

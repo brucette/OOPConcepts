@@ -13,7 +13,6 @@ namespace OOPConcepts
         private string lName;
         private double height;
         private double weight;
-        private string[] previousNames;
 
         public int Age 
         {
@@ -21,19 +20,18 @@ namespace OOPConcepts
             set 
             {
                 if (value <= 0)
-                    throw new ArgumentException("Age must be a value over 0.");
+                    throw new ArgumentException("Age must be more than 0.");
 
                 age = value;    
             }
         }
-
         public string FName 
         { 
             get { return fName; } 
             set 
             {
                 if (String.IsNullOrWhiteSpace(value) || value.Length < 2 || value.Length > 10)
-                    throw new ArgumentException("First name is required and should be between 2 and 10 characters long.");
+                    throw new ArgumentException("First name is required and should be between 2 and 10 characters long.\n");
 
                 fName = value;
             }
@@ -44,7 +42,7 @@ namespace OOPConcepts
             set
             {
                 if (String.IsNullOrWhiteSpace(value) || value.Length < 3 || value.Length > 15)
-                    throw new ArgumentException("Last name is required and should be between 3 and 15 characters long.");
+                    throw new ArgumentException("Last name is required and should be between 3 and 15 characters long.\n");
 
                 lName = value;
             }

@@ -17,18 +17,22 @@ namespace OOPConcepts
         public int Weight { get; set; }
         public int Age { get; set; }
 
-        public abstract void DoSound();
-
         public Animal(string name, int weight, int age)
         {
             Name = name;
             Weight = weight;
             Age = age;
         }
+
+        public abstract void DoSound();
+
+        public virtual string Stats()
+        {
+            return GetType().Name;
+        }
     }
 
     // Inheriting from Animal class:
-
     internal class Horse : Animal
     {
         public string Height { get; set; }
@@ -119,9 +123,7 @@ namespace OOPConcepts
         }
     }
 
-    /////////// PUNKT 3.3.8 /////////
     // Inheriting from Bird class:
-
     internal class Pelican: Bird 
     {
         public int BeakLength { get; set; }
@@ -152,6 +154,7 @@ namespace OOPConcepts
         }
     }
 
+    // Both inheriting from a class and implementing an interface
     public interface IPerson 
     {
         void Talk();
