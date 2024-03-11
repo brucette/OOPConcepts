@@ -11,19 +11,20 @@ namespace OOPConcepts
         private int age;
         private string fName;
         private string lName;
-        private int height;
-        private int weight;
+        private double height;
+        private double weight;
+        private string[] previousNames;
 
         public int Age 
         {
             get { return age; }
             set 
             {
-                if (value < 0)
-                    age = 0;
-                else
-                    age = value;
-            } 
+                if (value <= 0)
+                    throw new ArgumentException("Age must be a value over 0.");
+
+                age = value;    
+            }
         }
 
         public string FName 
@@ -31,6 +32,9 @@ namespace OOPConcepts
             get { return fName; } 
             set 
             {
+                if (String.IsNullOrWhiteSpace(value) || value.Length < 2 || value.Length > 10)
+                    throw new ArgumentException("First name is required and should be between 2 and 10 characters long.");
+
                 fName = value;
             }
         }
@@ -39,10 +43,13 @@ namespace OOPConcepts
             get { return lName; }
             set
             {
+                if (String.IsNullOrWhiteSpace(value) || value.Length < 3 || value.Length > 15)
+                    throw new ArgumentException("Last name is required and should be between 3 and 15 characters long.");
+
                 lName = value;
             }
         }
-        public int Height
+        public double Height
         {
             get { return height; }
             set
@@ -50,7 +57,7 @@ namespace OOPConcepts
                 height = value;
             }
         }
-        public int Weight
+        public double Weight
         {
             get { return weight; }
             set
@@ -59,7 +66,7 @@ namespace OOPConcepts
             }
         }
 
-        public Person(int age, string fname, string lname, int height, int weight)
+        public Person(int age, string fname, string lname, double height, double weight)
         {
             Age = age;
             FName = fname;
