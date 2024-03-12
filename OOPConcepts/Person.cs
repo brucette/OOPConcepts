@@ -25,6 +25,7 @@ namespace OOPConcepts
                 age = value;    
             }
         }
+
         public string FName 
         { 
             get { return fName; } 
@@ -36,6 +37,7 @@ namespace OOPConcepts
                 fName = value;
             }
         }
+
         public string LName
         {
             get { return lName; }
@@ -47,6 +49,7 @@ namespace OOPConcepts
                 lName = value;
             }
         }
+
         public double Height
         {
             get { return height; }
@@ -55,6 +58,7 @@ namespace OOPConcepts
                 height = value;
             }
         }
+
         public double Weight
         {
             get { return weight; }

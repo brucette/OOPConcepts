@@ -8,10 +8,10 @@ namespace OOPConcepts
         {
             try
             {
-                // **** PUNKT 3.1.1 ****
+                // **** PUNKT 3.1.1 - 3.1.4 ****
 
                 Person mathias = new Person(38, "Mathias", "Wahl", 1.70, 75);
-                // Console.WriteLine($"{mathias.age} {mathias.name} {mathias.lName} {mathias.fName} {mathias.weight} {mathias.height}"); // all private fields are inaccessible
+                // Console.WriteLine($"{mathias.age} {mathias.fName} {mathias.lName} {mathias.weight} {mathias.height}"); // all private fields are inaccessible
 
                 // All the following throw the correct error messages:
                 // mathias.Age = -3;
@@ -56,7 +56,7 @@ namespace OOPConcepts
             }
 
 
-            // **** PUNKT 3.2.7 - 8 ****
+            // **** PUNKT 3.2.7 - 3.2.10 ****
 
             UserError error1 = new TextInputError();
             UserError error2 = new NumericInputError();
@@ -77,7 +77,7 @@ namespace OOPConcepts
             }
 
 
-            // **** PUNKT 3.4.3 ****
+            // **** PUNKT 3.4.3 - 3.4.7 ****
 
             Horse horse = new Horse("Johnny", 200, 12, 2);
             Dog dog = new Dog("Beet", 70, 7, "great dane");
@@ -117,9 +117,10 @@ namespace OOPConcepts
 
 
             /* FRÅGA 9 & 10
-               dogs.Add(horse); - detta fungerar inte eftersom listan tar bara djur som är av typ Dog,
-               då Horse inte ärver Dog, funkar det inte. Alla djur ärver antingen direkt eller indirekt från Animal,
-               listan måste därför vara av typ Animal för att alla klasser ska kunna lagras tillsammans. 
+            dogs.Add(horse); - detta fungerar inte eftersom listan tar bara djur som är av typ Dog, 
+            Horse har inte access till metoder i Dog klass, funkar det inte. Alla djur ärver antingen 
+            direkt eller indirekt från Animal, listan måste därför vara av typ Animal för att alla 
+            klasser ska kunna lagras tillsammans. 
             */
 
             foreach (Animal animal in animals)
@@ -128,10 +129,10 @@ namespace OOPConcepts
             }
 
             /* FRÅGA 13
-               för varje djur i listan kallas det just den typens Stats() metod. 
-               Varje Stats() metod anropar basklassens metod, vilket returnerar namn, vikt och ålder,      
-               egenskaperna som finns i varenda klass. Sedan läggs till de eventuella specifika 
-               egenskaperna som finns i subklassen och returnernas alltihop. 
+            För varje djur i listan kallas det just den typens Stats() metod. 
+            Varje Stats() metod anropar basklassens metod, vilket returnerar namn, vikt och ålder,      
+            egenskaperna som finns i varenda klass. Sedan läggs till de eventuella specifika 
+            egenskaperna som finns i subklassen och returnernas alltihop. 
             */
 
 
@@ -149,13 +150,13 @@ namespace OOPConcepts
                     Console.WriteLine(castDog.CatchBall());
                 }
             }
-
+            
             /* FRÅGA 16 & 17
-               Man kommer inte åt metod CatchBall() från Animal listan då metoden inte 
-               finns i Animal klass. Listan innehåller instancer/objekt som behandlas av typ Animal 
-               som bara har tillgång till Animals metoder.
-               Genom att type-casta varje instans av Dog i Animal listan till Dog inom loopen, 
-               kan man sen komma åt metoder även i Dog klassen.
+            Man kommer inte åt metod CatchBall() från Animal listan då metoden inte 
+            finns i Animal klass. Listan innehåller instancer/objekt som behandlas av typ Animal 
+            som bara har tillgång till Animals metoder.
+            Genom att type-casta varje instans av Dog i Animal listan till Dog inom loopen, 
+            kan man sen komma åt metoder även i Dog klassen.
             */
         }
     }
